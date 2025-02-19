@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="appointment.css">
+    <script>
+        async function bookAppointment(event) {
+            event.preventDefault();  // Prevent form submission
+
+            let patientName = document.getElementById("patientName").value;
+            let doctorId = document.getElementById("doctor").value;
+            let date = document.getElementById("date").value;
+
+            // Send POST request to backend to save the appointment
+            let response = await fetch("http://localhost:8081/appointment/book", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    patientName,
+                    doctor: { id: doctorId },
+                    appointmentDate: date,
+                    status: "Pending"
+                })
+            });
+
+
+            // Check if the request was successful
+            if (response.ok) {
+                // Redirect to the thank-you page with the appointment details in the URL
+                window.location.href = `/thankyou.html?patientName=${encodeURIComponent(patientName)}&doctor=${encodeURIComponent(doctorId)}&date=${encodeURIComponent(date)}`;
+            } else {
+                alert("Failed to book the appointment. Please try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Book an Appointment</h2>
+    <form onsubmit="bookAppointment(event)">
+        <input type="text" id="patientName" placeholder="Your Name" required>
+        <select id="doctor" required>
+            <option value="1">Dr. Devvrat - Cardiologist</option>
+            <option value="2">Dr. Pragyan - Dentist</option>
+        </select>
+        <input type="date" id="date" required>
+        <a href="thankyou.html">Book</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Header Styles */
+h2 {
+    color: #2c3e50;
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* Link Styles */
+a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3498db;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+a:hover {
+    background-color: #2980b9;
+}
+
+/* Button Container Styling */
+.container {
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    a {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
